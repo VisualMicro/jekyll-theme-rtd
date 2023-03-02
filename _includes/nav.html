@@ -52,7 +52,9 @@
 {%- assign sections = sections | split: "|" | uniq | sort %}
 {%- for section in sections %}
     {%- assign preCleanSection = section | split: "." %}
+    <script>console.log("PreCleanSection: {{section}}")</script>
     {%- assign cleanSection = preCleanSection[1] | replace: "%20"," " %}
+    <script>console.log("CleanSection: {{cleanSection}}")</script>
     <p class="caption"><span class="caption-text">{{ cleanSection }}</span></p>
     {%- for nav_item in nav %}
         {%- assign path_array = nav_item.dir | split: "/" %}
