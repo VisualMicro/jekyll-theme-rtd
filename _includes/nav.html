@@ -22,7 +22,7 @@
 {%- comment %} First loop to print pages without categories and collect an array of categories {%- endcomment %}
 {%- for nav_item in nav %}
     {%- if nav_item.hide != true and nav_item.nav_exclude != true %}
-        {%- assign path_array = nav_item.dir | split: "/" %}
+        {%- assign path_array = nav_item.path | split: "/" %}
         {%- assign array_size = path_array | size %}
         {%- if array_size == 0 %}
             {%- if nav_item.url == page.url %}
