@@ -44,7 +44,8 @@
                 {% endif %}
             {%- endif %}
         {%- else %}
-            {%- assign cleanName = path_array[1] | split: "." | remove_first: " " %}
+            {%- assign preCleanName = path_array[1] | split: "." %}
+            {%- assign cleanName = preCleanName[0] |  | remove_first: " " %}
             {%- assign sections = sections | append: cleanName | append: "|" %}
         {%- endif %}
     {%- endif %}
