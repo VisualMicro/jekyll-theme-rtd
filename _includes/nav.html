@@ -44,7 +44,7 @@
                 {% endif %}
             {%- endif %}
         {%- else %}
-            {%- assign lastPathSection = array_size | minus: 1 %}
+            {%- assign lastPathSection = array_size | minus: 2 %}
             {%- assign sections = sections | append: path_array[lastPathSection] | append: "|" %}
         {%- endif %}
     {%- endif %}
