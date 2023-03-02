@@ -45,7 +45,7 @@
             {%- endif %}
         {%- else %}
             {%- assign preCleanName = path_array[1] | split: "." %}
-            {%- assign cleanName = preCleanName[0] |  | remove_first: " " %}
+            {%- assign cleanName = preCleanName[1] | remove_first: " " %}
             {%- assign sections = sections | append: cleanName | append: "|" %}
         {%- endif %}
     {%- endif %}
@@ -56,7 +56,9 @@
     <p class="caption"><span class="caption-text">{{ section }}</span></p>
     {%- for nav_item in nav %}
         {%- assign path_array = nav_item.dir | split: "/" %}
-        {%- assign page_section = path_array[1] %}
+        {%- assign preCleanName = path_array[1] | split: "." %}
+        {%- assign cleanName = preCleanName[1] | remove_first: " " %}
+        {%- assign page_section = cleanName %}
         {%- if page_section == section and nav_item.hide != true and nav_item.nav_exclude != true %}
             {%- if nav_item.url == page.url %}
                 {%- include toc.html html=content sanitize=true h_max=4 item_class="toctree-l%level%" %} 
