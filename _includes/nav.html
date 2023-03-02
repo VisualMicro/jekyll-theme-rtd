@@ -58,8 +58,10 @@
     <script>console.log("CleanSection: {{cleanSection}}")</script>
     <p class="caption"><span class="caption-text">{{ cleanSection }}</span></p>
     {%- for nav_item in nav %}
-        {%- assign path_array = nav_item.dir | split: "/" %}
-        {%- assign preCleanName = path_array[1] | split: "." %}
+        {%- assign path_array = nav_item.path | split: "/" %}
+        {%- assign array_size = path_array | size %}
+        {%- assign lastPathSection = array_size | minus: 2 %}
+        {%- assign preCleanName = path_array[lastPathSection] | split: "." %}
         {%- assign cleanName = preCleanName[1] | replace: "%20"," " %}
         {%- assign page_section = cleanName %}
 
